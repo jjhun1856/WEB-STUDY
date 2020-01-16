@@ -1,0 +1,16 @@
+#calendar
+{
+    border:1px solid #BDBDBD;
+    text-align:center;
+    width:30%;
+}
+#grid{
+  display:grid;
+  grid-template-columns: 150px 1fr;
+}
+#grid ol{
+  padding-left: 33px;
+}
+#grid #article{
+  padding-left : 25px;
+}
