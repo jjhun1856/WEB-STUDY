@@ -9,9 +9,66 @@
         padding: 15px;
       }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="colors.js"></script>
+    <script>
+
+      var checkLoginStatus = function(response) {
+        console.log(response);
+        // statusChangeCallback(response);
+        if(response.status === 'connected'){
+          document.querySelector('#authBtn').value = 'Logout';
+          FB.api('/me', function(resp){
+            document.querySelector('#name').innerHTML = ' Welcome '+resp.name;
+          });
+        } else {
+          document.querySelector('#authBtn').value = 'Login';
+          document.querySelector('#name').innerHTML = '';
+        }
+      }
+      window.fbAsyncInit = function() {
+       FB.init({
+         appId      : '593198754848804',
+         cookie     : true,                     // Enable cookies to allow the server to access the session.
+         xfbml      : true,                     // Parse social plugins on this webpage.
+         version    : 'v5.0'           // Use this Graph API version for this call.
+       });
+
+
+       // FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+       //   statusChangeCallback(response);        // Returns the login status.
+       // });
+        FB.getLoginStatus(checkLoginStatus);
+      };
+      (function(d, s, id) {                      // Load the SDK asynchronously
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
     <script src="/scripts/calendar.js"></script>
   </head>
-  <body onload="build();" style="background-color:#F7F2E0" margin=0>
+  <body onload="build();" style="background-color:#F7F2E0">
+    <input type="button" id="authBtn" value="checking..." onclick="
+      if(this.value === 'Login'){
+        // now logout
+        FB.login(function(res){
+          console.log('login =>', res);
+          checkLoginStatus(res);
+        });
+      } else {
+        // now login
+        FB.logout(function(res){
+          console.log('logout =>', res);
+          checkLoginStatus(res);
+        });
+      }
+  "> <span id="name"></span>
+    <input id="night_day" type="button" value="night" onclick="
+      nightDayHandler(this);
+    ">
     <div class="head1">
       <h1 align="center" >2019 겨울 계절 학기</h1>
     </div>
@@ -44,6 +101,9 @@
                 <li><a href="https://github.com/LonglifeHyun/LonglifeHyun-WebStudy2020_PNU">웹 스터디</a></li>
               </ul>
             </li>
+            <li><a href="https://www.hackers.co.kr/">해커스토익</a></li>
+            <li><a href="https://appexam.ybmnet.co.kr/toeic/receipt/receipt.asp">토익접수</a></li>
+            <li><a href="freeBoard.html">자유게시판</a></li>
          </ul>
       </div>
       <div class="main_layout">
