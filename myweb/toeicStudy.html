@@ -1,79 +1,122 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-7">
+    <meta charset="utf-8">
     <title>토익 스터디</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <style media="screen">
+      th,td{
+        padding: 15px;
+      }
+    </style>
+    <script src="/scripts/calendar.js"></script>
   </head>
-  <body>
-    <h1>토익 스터디</h1>
-    <hr color = "gray">
-    <h2>목표</h2>
-    <ul>
-      <li>900점</li>
-    </ul>
-    <h2>기간 및 모임 일시/장소</h2>
-    <ul>
-      <li>기간 <p>2020.01.01(수)~2020.02.08(토)</p></li>
-      <li>모임 일시/장소 <p>매주 일요일 16:30 / 창의마루 회의실A</p></li>
-    </ul>
-    <h2>시험 일정</h2>
-    <ul>
-      <li>시험일 <p>2020.02.09(일) 09:20 </p></li>
-      <li>인터넷 접수기간 <p>2019.12.09(월)10:00~2020.01.27(월)08:00 (응시료:44,500원)</p></li>
-      <li>성적 발표일 <p>2020.02.20(목) 06:00 </p></li>
-    </ul>
-    <h2>과제</h2>
-    <p>다음의 세 과제를 중심으로 매일 이루어지고, 매주 모임에서 모의고사 1회분을 진행한다.</p>
-    <ol>
-      <li>VOCA <p>해커스 토익 보카 책을 기준으로 하며 매일 2개의 Day 암기</p></li>
-      <li>RC <p>해커스 토익 READING RC 책을 기준으로 하며 학습 플랜 B에 따라 매일 학습한다.</p></li>
-      <li>LC <p>해커스 토익 LISTENING LC 책을 기준으로 하며 학습 플랜 B에 따라 매일 학습한다.</p></li>
-    </ol>
-    <h2>학습 순서</h2>
-    <table border="2">
-    <tr><th>주차</th><th>VOCA</th><th>RC</th><th>LC</th><th>체크</th></tr>
-    <tr>
-    <td>Week 1</td>
-    <td>Day1~10</td>
-    <td>p.1~100</td>
-    <td>p.1~100</td>
-    <td><input type="checkbox" checked></td>
-    </tr>
-    <tr>
-    <td>Week 2</td>
-    <td>Day11~24</td>
-    <td>p.101~200</td>
-    <td>p.101~200</td>
-    <td><input type="checkbox" checked></td>
-    </tr>
-    <tr>
-    <td>Week 3</td>
-    <td>Day25~30</td>
-    <td>p.201~300</td>
-    <td>p.201~300</td>
-    <td><input type="checkbox"></td>
-    </tr>
-    <tr>
-    <td>Week 4</td>
-    <td>Day1~10</td>
-    <td>p.301~400</td>
-    <td>p.301~400</td>
-    <td><input type="checkbox"></td>
-    </tr>
-    <tr>
-    <td>Week 5</td>
-    <td>Day11~20</td>
-    <td>p.401~500</td>
-    <td>p.401~500</td>
-    <td><input type="checkbox"></td>
-    </tr>
-    <tr>
-    <td>Week 6</td>
-    <td>Day21~30</td>
-    <td>p.501~600</td>
-    <td>p.501~600</td>
-    <td><input type="checkbox"></td>
-    </tr>
-    </table>
+  <body onload="build();" style="background-color:#F7F2E0" margin=0>
+    <div class="head1">
+      <h1 align="center" >2019 겨울 계절 학기</h1>
+    </div>
+    <div class="centering">
+      <div class="menubar">
+         <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="webStudy.html" id="current">웹 스터디</a>
+               <ul>
+                 <li><a href="webStudy.html">Overview</a></li>
+                 <li><a href="https://opentutorials.org/course/3084">HTML&Internet</a></li>
+                 <li><a href="https://opentutorials.org/course/3086">CSS</a></li>
+                 <li><a href="https://opentutorials.org/course/3085">JavaScript</a></li>
+                 <li><a href="https://opentutorials.org/course/3130">PHP</a></li>
+               </ul>
+            </li>
+            <li><a href="toeicStudy.html" >토익 스터디</a></li>
+            <li><a href="algorithmStudy.html" id="current">알고리즘 스터디</a>
+              <ul>
+                <li><a href="algorithmStudy.html">Overview</a></li>
+                <li><a href="https://www.geeksforgeeks.org/difference-between-bfs-and-dfs/">DFS&BFS</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm">Divide&Conquer</a></li>
+                <li><a href="https://www.geeksforgeeks.org/dynamic-programming/">Dynaminc Programming</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">Tree</a></li>
+              </ul>
+            </li>
+            <li><a href="index.html" id="current">GitHub</a>
+              <ul>
+                <li><a href="https://github.com/sgpk0717/2020_AlgorithmStudy_PNU">알고리즘 스터디</a></li>
+                <li><a href="https://github.com/LonglifeHyun/LonglifeHyun-WebStudy2020_PNU">웹 스터디</a></li>
+              </ul>
+            </li>
+         </ul>
+      </div>
+      <div class="main_layout">
+        <div>
+          <h2>목표</h2>
+          <ul>
+            <li>900점</li>
+          </ul>
+          <h2>기간 및 모임 일시/장소</h2>
+          <ul>
+            <li>기간 <p>2020.01.01(수)~2020.02.08(토)</p></li>
+            <li>모임 일시/장소 <p>매주 일요일 16:30 / 창의마루 회의실A</p></li>
+          </ul>
+          <h2>시험 일정</h2>
+          <ul>
+            <li>시험일 <p>2020.02.09(일) 09:20 </p></li>
+            <li>인터넷 접수기간 <p>2019.12.09(월)10:00~2020.01.27(월)08:00 (응시료:44,500원)</p></li>
+            <li>성적 발표일 <p>2020.02.20(목) 06:00 </p></li>
+          </ul>
+          <h2>과제</h2>
+          <p>다음의 세 과제를 중심으로 매일 이루어지고, 매주 모임에서 모의고사 1회분을 진행한다.</p>
+          <ol>
+            <li>VOCA <p>해커스 토익 보카 책을 기준으로 하며 매일 2개의 Day 암기</p></li>
+            <li>RC <p>해커스 토익 READING RC 책을 기준으로 하며 학습 플랜 B에 따라 매일 학습한다.</p></li>
+            <li>LC <p>해커스 토익 LISTENING LC 책을 기준으로 하며 학습 플랜 B에 따라 매일 학습한다.</p></li>
+          </ol>
+          <h2>학습 순서</h2>
+          <table border="2">
+          <tr><th>주차</th><th>VOCA</th><th>RC</th><th>LC</th><th>체크</th></tr>
+          <tr>
+          <td>Week 1</td>
+          <td>Day1~10</td>
+          <td>p.1~100</td>
+          <td>p.1~100</td>
+          <td><input type="checkbox" checked></td>
+          </tr>
+          <tr>
+          <td>Week 2</td>
+          <td>Day11~24</td>
+          <td>p.101~200</td>
+          <td>p.101~200</td>
+          <td><input type="checkbox" checked></td>
+          </tr>
+          <tr>
+          <td>Week 3</td>
+          <td>Day25~30</td>
+          <td>p.201~300</td>
+          <td>p.201~300</td>
+          <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+          <td>Week 4</td>
+          <td>Day1~10</td>
+          <td>p.301~400</td>
+          <td>p.301~400</td>
+          <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+          <td>Week 5</td>
+          <td>Day11~20</td>
+          <td>p.401~500</td>
+          <td>p.401~500</td>
+          <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+          <td>Week 6</td>
+          <td>Day21~30</td>
+          <td>p.501~600</td>
+          <td>p.501~600</td>
+          <td><input type="checkbox"></td>
+          </tr>
+          </table>
+      </div>
+    </div>
   </body>
-</html>
+  </html>
